@@ -1,0 +1,58 @@
+/* Reset and Base */
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #f0f4f7, #dbefff);
+  color: #333;
+  padding: 30px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+/* Timestamp Display */
+#timestamp {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #444;
+  background-color: #fefefe;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons (optional future styling) */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}

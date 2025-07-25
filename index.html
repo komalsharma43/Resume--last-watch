@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resume from Last Watch</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Resume from Last Watch</h1>
+
+    <!-- VIDEO ELEMENT -->
+    <video id="myVideo" width="600" controls>
+      <source
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        type="video/mp4"
+      />
+    </video>
+
+    <!--  FIREBASE + VIDEO TIMESTAMP SCRIPT -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+      } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyACGwA3NtOIf79Qa9JIRM4ehAFGN4gP6W8",
+        authDomain: "resume-video-app.firebaseapp.com",
+        projectId: "resume-video-app",
+        storageBucket: "resume-video-app.appspot.com",
+        messagingSenderId: "782386404472",
+        appId: "1:782386404472:web:1f760354d1e146c327a18d",
+        databaseURL: "https://resume-video-app-default-rtdb.firebaseio.com",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const video = document.getElementById("myVideo");
+      const userId = "user123"; // custom user ID
+
+      //  Resume from last watched
+      window.onload = async () => {
+        const snapshot = await get(ref(db, "videoTime/" + userId));
+        if (snapshot.exists()) {
+          const savedTime = snapshot.val();
+          video.currentTime = savedTime;
+        }
+      };
+
+      //  Auto-save every 5 sec
+      setInterval(() => {
+        const currentTime = video.currentTime;
+        set(ref(db, "videoTime/" + userId), currentTime);
+      }, 5000);
+    </script>
+  </body>
+</html>
